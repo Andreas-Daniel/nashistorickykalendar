@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Náš kalendář</title>
-    <link rel="icon" type="image/x-icon" href="../img/NK-logo.png">
+    <link rel="icon" type="image/x-icon" href="../img/logo-letters-NK.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,18 +17,42 @@
             <a href="../">Domů</a>
             <a href="../produkty/">Kalendář</a>
         </nav>
-        <h1>NK</h1>
+        <img src="../img/logo-colored.jpg" alt="logo-icon" height="80">
         <nav class="navigation">
             <a href="../o-nas/">O nás</a>
             <a href="../vitejte-na-nasem-blogu/">Blog</a>
         </nav>
     </header>
     <main>
-        
-        <div class="in-progress">
-            <h2>KONTAKT</h2>
-            Na této stránce ještě pracujeme
+        <p>Vaše názory, zpětná vazba nebo dotazy jsou pro nás důležité! Neváhejte nám napsat.</p>
+        <div id="contact-page">
+            <div id="contact-form-container">
+                <h1>KONTAKTUJTE NÁS</h1>
+                <form id="contact-form" action="https://formspree.io/f/mjkvrlko" method="POST">
+                    <label for="name">Název:</label>
+                    <input class="form-input" type="text" name="name" id="name">
+                    <label for="email">Email:<span>*</span></label>
+                    <input class="form-input" type="email" name="email" id="email" required="1">
+                    <label for="message">Telefonní číslo:</label>
+                    <input class="form-input" type="tel" name="phone-number" id="phone-number">
+                    <label for="message">Komentář:</label>
+                    <textarea class="form-text-area" name="message" cols="30" rows="10"></textarea>
+                    <input class="button" type="submit" value="Odeslat">
+                </form>
+            </div>
+            <div id="contact-info">
+                <h2>Kontakt</h2>
+                <span>nashistorickykalendar@gmail.com</span>
+                <h2>Sociální sítě</h2>
+                <div id="contact-socials">
+                    <a href="https://www.instagram.com/naskalendar/"><i class="fa fa-instagram fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@n%C3%A1%C5%A1historick%C3%BDkalend%C3%A1%C5%99">
+                        <i class="fa fa-youtube fa-lg"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+        
     </main>
     <footer>
         <div class="copyright">
