@@ -15,12 +15,16 @@ h1 {
     font-size: 40px;
 }
 
-header {
+#big-screen-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: solid rgb(50, 50, 50);
     border-width: 2px;
+}
+
+#small-screen-navigation {
+    display: none;
 }
 
 nav a {
@@ -563,17 +567,23 @@ footer div {
 
 /* O nás */
 
-.about-us-row {
+.about-us-row,
+.about-us-row-rev {
     display: flex;
     gap: 40px;
     margin: 40px 0;
     align-items: center;
 }
 
-.about-us-row img {
+.about-us-row img,
+.about-us-row-rev img {
     width: 50%;
     height: 600px;
     object-fit: cover;
+}
+
+.about-us-row-rev {
+    flex-direction: row-reverse;
 }
 
 .about-us-text {
@@ -594,4 +604,191 @@ footer div {
     justify-content: center;
     gap: 24px;
     margin-bottom: 40px;
+}
+
+
+/* Base styles (as provided) */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    main {
+        width: 100%;
+    }
+
+    #big-screen-navigation {
+        display: none;
+    }
+    
+    #small-screen-navigation {
+        border-bottom: solid rgb(50, 50, 50);
+        border-width: 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    nav a {
+        width: 25%;
+        margin: 8px 0;
+    }
+
+    .calendar-columns, .blog-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar-column, .blog-column {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 24px;
+    }
+
+    .home-news h2 {
+        font-size: 36px; /* Smaller font size */
+    }
+
+    .paragraph-on-background {
+        font-size: 16px;
+    }
+
+    .button {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        padding: 12px 16px;
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+        padding-top: 16px;
+    }
+
+    footer div {
+        width: 100%;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .motto h2 {
+        font-size: 32px;
+    }
+
+    .main-section {
+        margin-top: 80px;
+        padding: 0 16px;
+    }
+
+    .blog-columns {
+        gap: 24px;
+    }
+
+    .home-contact h2 {
+        font-size: 48px;
+    }
+
+    .product-card {
+        width: 100%;
+        margin: 0 0 24px;
+        margin-top: 24px;
+    }
+
+    .calendar-block {
+        flex-direction: column;
+        margin: 24px 0;
+    }
+
+    .calendar-info,
+    .calendar-photo,
+    .calendar-photos {
+        width: 100%;
+    }
+
+    .calendar-photos img {
+        height: auto;
+    }
+
+    .blog-post h1 {
+        font-size: 24px;
+    }
+
+    .blog-post h2 {
+        font-size: 18px;
+    }
+
+    .blog-post p {
+        font-size: 14px;
+    }
+
+    .about-us-row,
+    .about-us-row-rev {
+        flex-direction: column;
+    }
+
+    .about-us-row img,
+    .about-us-row-rev img {
+        width: 100%;
+        height: auto;
+    }
+
+    .about-us-text {
+        width: 100%;
+    }
+
+    #about-us-contact div {
+        flex-direction: column;
+    }
+
+    #contact-page {
+        flex-direction: column-reverse;
+    }
+
+    #contact-form-container,
+    #contact-info {
+        width: 100%;
+    }
+
+    #contact-info {
+        text-align: center;
+    }
+
+    #contact-socials {
+        justify-content: center;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .home-news h2 {
+        font-size: 28px;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 10px 14px;
+    }
+
+    .motto p {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    #form-header {
+        font-size: 32px;
+    }
 }
