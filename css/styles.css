@@ -341,6 +341,10 @@ footer div {
     margin: 0;
 }
 
+.delivery-price {
+    margin: 0;
+}
+
 /* Stránka kalendář */
 
 .calendar-block {
@@ -390,7 +394,7 @@ footer div {
     object-fit: cover;
 }
 
-.calendar-info .product-price {
+.calendar-info .overal-price {
     margin-bottom: 32px;
 }
 
@@ -429,11 +433,24 @@ footer div {
 
 /* Formulář objednávky */
 
-#order-form {
+#order-form,
+#additional-inputs {
     display: flex;
     flex-direction: column;
+}
+
+#order-form {
     padding: 0 16px;
-    padding-bottom: 24px;
+    padding-bottom: 32px;
+}
+
+#order-form .button {
+    margin-top: 16px;
+}
+
+#additional-inputs {
+    padding-top: 12px;
+    border-top: 1px solid #8e754a;
 }
 
 #form-header-background {

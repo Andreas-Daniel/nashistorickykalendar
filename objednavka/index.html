@@ -43,14 +43,92 @@
         </div>
         <p id="form-text">Pošlete nám mail a my Vás kontaktujeme ohledně objednávky.</p>
         <form id="order-form" action="https://formspree.io/f/mkgnrvlw" method="POST">
-            <label for="name">Jméno:</label>
-            <input class="form-input" type="text" name="name" id="name">
+            <label for="name">Jméno:<span>*</span></label>
+            <input class="form-input" type="text" name="name" id="name" required="1">
+        
+            <label for="tel">Telefon:<span>*</span></label>
+            <input class="form-input" type="tel" name="tel" id="tel" required="1">
+        
             <label for="email">Email:<span>*</span></label>
             <input class="form-input" type="email" name="email" id="email" required="1">
-            <label for="message">Poznámka:</label>
-            <textarea class="form-text-area" name="message" cols="30" rows="10"></textarea>
+        
+            <label for="count">Počet kalendářů:<span>*</span></label>
+            <input class="form-input" type="number" name="count" id="count" min="1" value="1" required="1">
+        
+            <label for="delivery">Způsob doručení:<span>*</span></label>
+            <select class="form-input" name="delivery" id="delivery">
+                <option value="placeholder" selected="1" hidden="1">Vyberte způsob doručení</option>
+                <option value="zasilkovna">Výdejní místo</option>
+                <option value="address-delivery">Doručení na adresu (+30 Kč)</option>
+            </select>
+        
+            <div id="additional-inputs"></div>
+        
+            <div id="total-price">
+                <strong>Celková cena: <span id="price">408 Kč</span></strong>
+            </div>
+        
             <input class="button" type="submit" value="Odeslat">
         </form>
+        
+        <script>
+            // Constants for pricing
+            const PRODUCT_PRICE = 329;
+            const DELIVERY_ZASILKOVNA = 79;
+            const DELIVERY_ADDRESS_FEE = 30;
+        
+            // References to form elements
+            const deliverySelect = document.getElementById('delivery');
+            const countInput = document.getElementById('count');
+            const additionalInputs = document.getElementById('additional-inputs');
+            const priceDisplay = document.getElementById('price');
+        
+            // Function to calculate and update total price
+            function updateTotalPrice() {
+                const count = parseInt(countInput.value) || 1; // Default to 1 if empty
+                let deliveryFee = DELIVERY_ZASILKOVNA;
+        
+                if (deliverySelect.value === 'address-delivery') {
+                    deliveryFee += DELIVERY_ADDRESS_FEE;
+                }
+        
+                const totalPrice = (PRODUCT_PRICE * count) + deliveryFee;
+                priceDisplay.textContent = `${totalPrice} Kč`;
+            }
+        
+            // Listen for changes in delivery method and update inputs
+            deliverySelect.addEventListener('change', function () {
+                // Clear previous inputs
+                additionalInputs.innerHTML = '';
+        
+                if (deliverySelect.value === 'zasilkovna') {
+                    additionalInputs.innerHTML = `
+                        <label for="pickup-location">Výdejní místo:<span>*</span></label>
+                        <input class="form-input" type="text" name="pickup-location" id="pickup-location" required>
+                    `;
+                } else if (deliverySelect.value === 'address-delivery') {
+                    additionalInputs.innerHTML = `
+                        <label for="address">Ulice a číslo popisné:<span>*</span></label>
+                        <input class="form-input" type="text" name="address" id="address" required>
+        
+                        <label for="city">Město:<span>*</span></label>
+                        <input class="form-input" type="text" name="city" id="city" required>
+        
+                        <label for="zip">PSČ:<span>*</span></label>
+                        <input class="form-input" type="text" name="zip" id="zip" required>
+                    `;
+                }
+        
+                updateTotalPrice();
+            });
+        
+            // Listen for changes in the count input and update the total price
+            countInput.addEventListener('input', updateTotalPrice);
+        
+            // Initial calculation
+            updateTotalPrice();
+        </script>
+        
     </main>
     <footer>
         <div class="copyright">
